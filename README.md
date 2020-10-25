@@ -18,6 +18,7 @@
 
 ### 入门篇 🐶
 
+- [Javascript筆記](./javascript/JavaScript筆記.md)
 - [go 语言入门](./introduction/golang.md)
 - [算法快速入门](./introduction/quickstart.md)
 
@@ -95,9 +96,9 @@
 
 完成计划之后，可以提交 Pull requests，在下面添加自己的项目仓库，完成自己的算法模板打卡呀~
 
-| 完成 | 用户                                              | 项目地址                                                            |
-| ---- | ------------------------------------------------- | ------------------------------------------------------------------- |
-| ✅   | [easyui](https://github.com/easyui/) | [algorithm-pattern-swift(Swift 实现)](https://github.com/easyui/algorithm-pattern-swift),[在线文档 Gitbook](https://zyj.gitbook.io/algorithm-pattern-swift/) |
-| ✅   | [wardseptember](https://github.com/wardseptember) | [notes(Java 实现)](https://github.com/wardseptember/notes)          |
-| ✅   | [dashidhy](https://github.com/dashidhy) | [algorithm-pattern-python(Python 实现)](https://github.com/dashidhy/algorithm-pattern-python) |
-| ✅   | [binzi56](https://github.com/binzi56) | [algorithm-pattern-c(c++ 实现)](https://github.com/binzi56/algorithm-pattern-c) |
+| 完成 | 用户                                              | 项目地址                                                                                                                                                     |
+| ---- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ✅    | [easyui](https://github.com/easyui/)              | [algorithm-pattern-swift(Swift 实现)](https://github.com/easyui/algorithm-pattern-swift),[在线文档 Gitbook](https://zyj.gitbook.io/algorithm-pattern-swift/) |
+| ✅    | [wardseptember](https://github.com/wardseptember) | [notes(Java 实现)](https://github.com/wardseptember/notes)                                                                                                   |
+| ✅    | [dashidhy](https://github.com/dashidhy)           | [algorithm-pattern-python(Python 实现)](https://github.com/dashidhy/algorithm-pattern-python)                                                                |
+| ✅    | [binzi56](https://github.com/binzi56)             | [algorithm-pattern-c(c++ 实现)](https://github.com/binzi56/algorithm-pattern-c)                                                                              |
