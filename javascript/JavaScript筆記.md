@@ -2,7 +2,7 @@
 
 ## Javascript 的 class
 
-### Reference Type
+### 1. Reference Type
 
 範例 1：
 ``` Javascript
@@ -21,29 +21,33 @@ object1.value = 15;
 object2.value // 15;
 object3.value // 10;
 ```
-- Primitive Type
-  - Defined by the language
-  - JavaScript built-in types
-    - boolean
-    - number
-    - bigint
-    - string
-    - null
-    - undefined
-    - symbol
-    - object
-- Reference Type
-  - Created by programmers
-  - 在範例 2:
+Primitive Type
+
+- Defined by the language
+- JavaScript built-in types
+  - boolean
+  - number
+  - bigint
+  - string
+  - null
+  - undefined
+  - symbol
+  - object
+
+
+Reference Type
+
+- Created by programmers
+- 在範例 2:
   - object 1 and object 2 are actually object 1
   - (object 2 references object 1)
   - object 3 is the new object and is actually object 3
 
 
 
-### Instantiation
+### 2. Instantiation
 
-範例：
+ES6 範例：
 
 ``` JavaScript
 class Player {
@@ -52,25 +56,50 @@ class Player {
 		this.type = type;
 	}
 	introduce() {
-		console.log(`Hi I am ${this.name}, I am a ${this.type}`)
+		console.log(`Hi I am ${this.name}, I am a ${this.type}`);
 	}
 }
 
 class Wizard extends Player {
-	constructor(name, type) {
-		super(name, type)
+  constructor(name, type) {
+		super(name, type);
   }
   play() {
-    console.log(`Coool I am a ${this.type}`)
+    console.log(`Coool I am a ${this.type}`);
   }
 }
 
 const wizard1 = new Wizard('Shelly', 'Healer');
-const wizard2 = new Wizard('Shawn', 'Dark Magic')
+const wizard2 = new Wizard('Shawn', 'Dark Magic');
 
 wizard1.play(); // Coool I am a Healer
 wizard1.introduce(); // Hi I am Shelly, I am a Healer
 ```
+
+以前的作法 (不推薦)：
+
+``` JavaScript
+var Player = function(name, type) {
+  this.name = name;
+  this.type = type;
+}
+
+Player.prototype.introduce = function() {
+  console.log(`Hi I am ${this.name}, I am a ${this.type}`);
+} 
+
+const wizard1 = new Wizard('Shelly', 'Healer');
+const wizard2 = new Wizard('Shawn', 'Dark Magic');
+
+wizard1.play = function() {
+  console.log(`Coool I am a ${this.type}`);
+}
+
+wizard2.play = function() {
+  console.log(`Coool I am a ${this.type}`);
+}
+```
+
 
 ---
 
@@ -112,15 +141,18 @@ let last = strings[strings.length - 1]  // 'd'
 
 ``` Javascript
 // forEach
+
 strings.forEach(function(item, index, array) {
   console.log(item, index);
 })
+
 // 'a' 0
 // 'b' 1
 // 'c' 2
 // 'd' 3
 
 // 或是用 ES6 Arrow Function
+
 strings.forEach((item, index, array) => console.log(item, index))
 ```
 
@@ -129,22 +161,33 @@ strings.forEach((item, index, array) => console.log(item, index))
 ``` Javascript
 // push 加在最後面
 // O(1)
+
 strings.push('e'); 
+
 // ['a', 'b', 'c', 'd', 'e']
+
 
 // pop 把最後面的東西丟掉
 // O(1)
+
 strings.pop(); 
+
 // ['a', 'b', 'c', 'd']
+
 
 // unshift 加東西在前面
 // O(n) 因為要移動所有的內容到新的index
+
 strings.unshift('x');
+
 // ['x', 'a', 'b', 'c', 'd']
+
 
 // shift 移除最前面的項目
 // O(n)
+
 let first = strings.shift();
+
 // first: ['x']
 // new array: ['a', 'b', 'c', 'd']
 
@@ -160,6 +203,7 @@ let first = strings.shift();
   ``` Javascript
   const months = ['Jan', 'March', 'April', 'June'];
   let removed = months.splice(2, 0, 'drum');
+
   console.log(months)
   // months   ["Jan", "March", "drum", "April", "June"]
   console.log(removed)
@@ -170,6 +214,7 @@ let first = strings.shift();
   ``` Javascript
   const months = ['Jan', 'March', 'April', 'June'];
   let removed = months.splice(2, 1, 'tree');
+
   console.log(months)
   // months = ["Jan", "March", "tree", "June"]
   console.log(removed)
@@ -194,15 +239,15 @@ let first = strings.shift();
   // expected output: Array ["1", "2", "3", "4"]
   ```
 
-  ### Static vs. Dynamic Arrays
+### Static vs. Dynamic Arrays
 
-  - Static: 在建立Array的時候先指定好了大小
-    - C++: `int a[20]` or `int b[5] {1,2,3,4,5}`
-  - Dynamic: copy and rebuild the array at a new location with more memory
-    - 所以 append (or push) 可能會是 O(n), 因為需要 loop 過一遍去複製到新的 array
-    - 語言：Javascript, Python, Java 的 dynamic list
-    - Big O
-      - Lookup 查找: O(1)
-      - Append 新增在後面: O(1), can be O(n)
-      - Insert 加在任一位置: O(n)
-      - Delete 刪除: O(b)
+- **Static**: 在建立Array的時候先指定好了大小
+  - C++: `int a[20]` or `int b[5] {1,2,3,4,5}`
+- **Dynamic**: copy and rebuild the array at a new location with more memory
+  - 所以 append (or push) 可能會是 O(n), 因為需要 loop 過一遍去複製到新的 array
+  - 語言：Javascript, Python, Java 的 dynamic list
+  - Big O
+    - Lookup 查找: O(1)
+    - Append 新增在後面: O(1), can be O(n)
+    - Insert 加在任一位置: O(n)
+    - Delete 刪除: O(b)
