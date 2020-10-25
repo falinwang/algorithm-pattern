@@ -126,6 +126,15 @@ const strings = ['a', 'b', 'c', 'd'];
 const numbers = [1, 2, 3, 4, 5];
 ```
 
+- 優點：
+  - index 定位快 (Fast lookups)
+  - Fast Push and pop
+  - 有排序的 Ordered
+- 缺點：
+  - insert 慢
+  - delete 慢
+  - Fixed size when using static array
+
 ### Operations
 
 
@@ -251,3 +260,155 @@ let first = strings.shift();
     - Append 新增在後面: O(1), can be O(n)
     - Insert 加在任一位置: O(n)
     - Delete 刪除: O(b)
+
+### 實作 Array
+
+``` JavaScript
+class MyArray {
+  constructor(){
+    this.length = 0;
+    this.data = {};
+  }
+
+  get(index) {
+    return this.data[index]
+  }
+
+  push(item){
+    this.data[this.length] = item;
+    this.length ++;
+    return this.length;
+  }
+
+  pop(){
+    const lastItem = this.data[this.length-1]
+    delete this.data[this.length-1]
+    this.length --;
+    return lastItem;
+  }
+
+  delete(index){
+    const deletedItem = this.data[index];
+    this.shiftItems(index);
+    return deletedItem;
+  }
+
+  shiftItems(index){
+    for (let i = index; i < this.length-1; i++) {
+      this.data[i] = this.data[i+1];
+    }
+    delete this.data[this.length-1]
+    this.length --;
+  }
+}
+
+const newArray = new MyArray();
+newArray.push('Hi');
+newArray.push('You');
+newArray.push('!');
+newArray.delete(0);
+newArray.push('are');
+newArray.push('nice');
+newArray.push('!');
+newArray.delete(1);
+console.log(newArray);
+```
+
+### 練習題
+#### Merge Sorted Array
+
+``` JavaScript
+// mergeSortedArrays([0,3,4,31], [4,6,30]);
+// [0, 3, 4, 4, 6, 30, 31]
+
+
+function mergeSortedArrays(arr1, arr2) {
+  const mergedArray = [];
+  let arr1Item = arr1[0];
+  let arr2Item = arr2[0];
+  let i = 1;
+  let j = 1;
+
+  // Check input
+  if (arr1.length === 0) {
+    return arr2;
+  }
+  if (arr2.length === 0) {
+    return arr1;
+  }
+
+  while (arr1Item || arr2Item) {
+    console.log(arr1Item, arr2Item)
+    // If one of that is undefine, means empty
+    if (!arr2Item || !arr1Item || arr1Item < arr2Item) {
+      // should push arr1 item to new array
+      mergedArray.push(arr1Item)
+      arr1Item = arr1[i]
+      i++
+    } else {
+      // should push arr2 item to new array
+      mergedArray.push(arr2Item)
+      arr2Item = arr2[j]
+      j++
+    }
+  }
+
+  return mergedArray;
+}
+
+mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+// [ 0, 3, 4, 4, 6, 30, 31 ]
+```
+
+---
+
+## String
+
+轉成 Array 處理，再 return as a string
+
+``` JavaScript
+array.split("").join("")
+```
+
+範例： Reverse String
+
+四種做法
+``` JavaScript
+// Create a function that reverses a string:
+// 'Hi My name is Roy'
+// 'yoR si eman yM iH'
+
+function reverseString(str){
+  // check input
+  if (!str || str.length < 2 || typeof str !== 'string') {
+    return 'input not valid'
+  }
+  // reverse the array
+  let reversedArray = [];
+  const totalItems = str.length - 1;
+  for (let i = totalItems; i >= 0; i--){
+    reversedArray.push(str[i])
+  }
+  // array to string
+  return reversedArray.join(''); 
+}
+console.log(reverseString('Hi My name is Roy'));
+
+
+function reverse2(str){
+  // check input
+  if (!str || str.length < 2 || typeof str !== 'string') {
+    return 'input not valid'
+  }
+  return str.split('').reverse().join('')
+}
+console.log(reverse2("12345678"))
+
+// using ES6
+const reverse3 = str => str.split('').reverse().join('');
+console.log(reverse3("1234567890"))
+
+// using spread
+const reverse4 = str => [...str].reverse().join('');
+console.log(reverse4("098767890987654321"))
+```
